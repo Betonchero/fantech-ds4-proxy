@@ -1,0 +1,8 @@
+# udev rules for the Fantech Shooter III DS4 proxy.
+#
+# The daemon runs as root, so it only needs /dev/uhid here. While running, the
+# daemon also installs /run/udev/rules.d/96-fantech-ds4-proxy-hide.rules, which
+# hides the physical controller's hidraw/evdev/js nodes (mode 000 + no uaccess
+# ACL). That rule is removed when the daemon exits.
+
+KERNEL=="uhid", SUBSYSTEM=="misc", MODE="0660", GROUP="input", TAG+="uaccess"

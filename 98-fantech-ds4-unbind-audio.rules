@@ -1,0 +1,6 @@
+# Unbind the Fantech dongle's broken USB-Audio interface as soon as it binds.
+# Without this, snd-usb-audio's failed probe makes the dongle (and therefore
+# the HID/gyro interface) reset every ~2 seconds. The helper retries until the
+# driver has bound, then unbinds it.
+
+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0f0d", ATTRS{idProduct}=="0162", ATTR{bInterfaceClass}=="01", RUN+="/usr/local/bin/fantech-unbind-audio.sh %k"

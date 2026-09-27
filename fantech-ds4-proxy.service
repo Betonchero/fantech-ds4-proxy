@@ -1,0 +1,21 @@
+[Unit]
+Description=Fantech Shooter III -> DualShock 4 uhid proxy
+After=systemd-udevd.service
+Wants=systemd-udevd.service
+
+[Service]
+Type=simple
+ExecStartPre=-/sbin/modprobe hid_playstation
+ExecStart=/usr/local/bin/fantech-ds4-proxy
+Restart=always
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+
+# Security sandbox (the daemon needs root for /dev/uhid and hidraw)
+ProtectHome=true
+ProtectSystem=full
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
