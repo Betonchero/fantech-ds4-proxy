@@ -56,7 +56,7 @@ which keeps Steam's gyro working. The window is 5 seconds by default, see
 ## Install
 
 ```bash
-git clone <this repo> fantech-ds4-proxy
+git clone https://github.com/Betonchero/fantech-ds4-proxy fantech-ds4-proxy
 cd fantech-ds4-proxy
 sudo ./install.sh
 ```
